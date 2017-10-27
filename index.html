@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Multilayer Perceptron</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script src="Brain.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var N = new Neuron(2);
+            console.log(N);
+
+            function guessOR() {
+                console.log(N.weights);
+                console.log(N.guess([0, 0]));
+                console.log(N.guess([1, 0]));
+                console.log(N.guess([0, 1]));
+                console.log(N.guess([1, 1]));
+            };
+
+            function trainOR() {
+                let i = 0;
+                while(i < Math.pow(10, 6)) {
+                    N.train([0, 0], 0);
+                    N.train([1, 0], 1);
+                    N.train([0, 1], 1);
+                    N.train([1, 1], 1);
+                    i++;
+                }
+                guessOR();
+            };
+            
+            
+            
+            function guessAND() {
+                console.log(N.weights);
+                console.log(N.guess([0, 0]));
+                console.log(N.guess([1, 0]));
+                console.log(N.guess([0, 1]));
+                console.log(N.guess([1, 1]));
+            };
+
+            function trainAND() {
+                let i = 0;
+                while(i < Math.pow(10, 6)) {
+                    N.train([0, 0], 0);
+                    N.train([1, 0], 0);
+                    N.train([0, 1], 0);
+                    N.train([1, 1], 1);
+                    i++;
+                }
+                guessAND();
+            };
+        </script>
+    </body>
+</html>
