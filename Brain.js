@@ -60,6 +60,8 @@ function Neuron(inputs, o) {
     }
 };
 
+// generates weights for current neuron
+// int inputs = number of inputs
 Neuron.prototype.genWeights = function(inputs) {
     let weights = new Array(inputs);
 
@@ -70,6 +72,8 @@ Neuron.prototype.genWeights = function(inputs) {
     return weights;
 };
 
+// does a weighted sum and applies a sigmoid function to squash values between 0 and 1.
+// param array inputs
 Neuron.prototype.guess = function (inputs) {
     // shiffman's code
     let sum = 0;
@@ -81,6 +85,9 @@ Neuron.prototype.guess = function (inputs) {
     return sigmoid(sum);
 };
 
+// trains the neuron
+// param array inputs
+// param int target = desired prediction
 Neuron.prototype.train = function(inputs, target) {
     let guess = this.guess(inputs);
     let error = target - guess;
@@ -92,4 +99,4 @@ Neuron.prototype.train = function(inputs, target) {
     
     // tune the bias (finally figured it out)
     this.bias += error * this.learningRate;
-}
+};
